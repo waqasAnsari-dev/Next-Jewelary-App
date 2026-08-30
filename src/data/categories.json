@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Earrings",
+    "slug": "earrings",
+    "image": "/images/categories/earrings.jpg",
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "name": "Tiaras",
+    "slug": "tiaras",
+    "image": "/images/categories/tiaras.jpg",
+    "isActive": true
+  },
+  {
+    "id": 3,
+    "name": "Bracelets",
+    "slug": "bracelets",
+    "image": "/images/categories/bracelets.jpg",
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "name": "Pendants",
+    "slug": "pendants",
+    "image": "/images/categories/pendants.jpg",
+    "isActive": true
+  },
+  {
+    "id": 5,
+    "name": "Resin jhumkas",
+    "slug": "resin-jhumkas",
+    "image": "/images/categories/resin-jhumkas.jpg",
+    "isActive": true
+  },
+  {
+    "id": 6,
+    "name": "Flower preservation",
+    "slug": "flower-preservation",
+    "image": "/images/categories/flower-preservation.jpg",
+    "isActive": true
+  },
+  {
+    "id": 7,
+    "name": "Rings",
+    "slug": "rings",
+    "image": "/images/categories/rings.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 8,
+    "name": "Arm cuffs",
+    "slug": "arm-cuffs",
+    "image": "/images/categories/arm-cuffs.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 9,
+    "name": "Neck pieces",
+    "slug": "neck-pieces",
+    "image": "/images/categories/neck-pieces.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 10,
+    "name": "Gift Boxes",
+    "slug": "eid-boxes",
+    "image": "/images/categories/gift-boxes.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 11,
+    "name": "Bangles",
+    "slug": "bangles",
+    "image": "/images/categories/Bangles.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 12,
+    "name": "Hair Accessories",
+    "slug": "hair-accessories",
+    "image": "/images/categories/hair-accessories.jpeg",
+    "isActive": true
+  },
+  {
+    "id": 13,
+    "name": "Charms",
+    "slug": "charms",
+    "image": "/images/categories/Charms.jpeg",
+    "isActive": true
+  }
+]
