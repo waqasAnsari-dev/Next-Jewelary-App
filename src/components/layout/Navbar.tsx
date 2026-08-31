@@ -9,6 +9,7 @@ import { useCart } from "../../context/CartContext";
 
 export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount } = useCart();
 
   return (
@@ -157,7 +158,7 @@ export default function Navbar() {
 
 
           {/* Account */}
-          <Link href="/account" aria-label="Account" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent">
+          <Link href="/account" aria-label="Account" className="hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent">
             <svg
               width="27"
               height="27"
@@ -198,9 +199,71 @@ export default function Navbar() {
             )}
           </Link>
 
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#efdce2] bg-[#fff9fa] md:hidden"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+
         </div>
 
       </div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="border-t border-[#f0dfe4] bg-white px-4 py-4 md:hidden">
+          <div className="flex flex-col gap-2">
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-[#222] hover:bg-[#fff5f7] hover:text-[#c88d9d]">
+              HOME
+            </Link>
+
+            <div className="rounded-md border border-[#f3e6ea] bg-[#fffafc] p-2">
+              <div className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#8a6d75]">
+                SHOP
+              </div>
+              <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="block rounded-md px-3 py-2 text-sm text-[#333] hover:bg-white hover:text-[#c88d9d]">
+                All Products
+              </Link>
+              {categories.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/shop/${category.slug}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block rounded-md px-3 py-2 text-sm text-[#333] hover:bg-white hover:text-[#c88d9d]"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+
+            <Link href="/sale" onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-[#222] hover:bg-[#fff5f7] hover:text-[#c88d9d]">
+              SALE 🔥
+            </Link>
+
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-[#222] hover:bg-[#fff5f7] hover:text-[#c88d9d]">
+              CONTACT
+            </Link>
+
+            <Link href="/account" onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-[#222] hover:bg-[#fff5f7] hover:text-[#c88d9d]">
+              ACCOUNT
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
