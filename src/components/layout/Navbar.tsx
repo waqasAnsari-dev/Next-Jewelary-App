@@ -13,21 +13,21 @@ export default function Navbar() {
 
   return (
     <nav className="relative z-50 border-b border-[#f0dfe4] bg-white">
-      <div className="mx-auto flex h-[125px] max-w-[1500px] items-center justify-between px-8">
+      <div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-3 px-4 py-3 md:h-[125px] md:px-8">
 
         {/* Logo */}
-        <Link href="/" className="shrink-0">
+        <Link href="/" className="shrink-0 order-1">
           <Image
             src="/logo.png"
             alt="By Hiba"
             width={125}
             height={60}
-            className="h-auto w-[125px]"
+            className="h-auto w-[95px] md:w-[125px]"
           />
         </Link>
 
         {/* Navigation */}
-        <div className="flex h-full items-center gap-12">
+        <div className="order-3 hidden h-full items-center gap-6 md:flex md:gap-12">
 
           {/* HOME */}
           <Link
@@ -130,10 +130,10 @@ export default function Navbar() {
 
 
         {/* Right side */}
-        <div className="flex items-center gap-6">
+        <div className="order-2 ml-auto flex items-center gap-3 md:order-3 md:gap-6">
 
           {/* Search */}
-          <div className="flex h-[50px] w-[270px] items-center rounded-full border border-[#efdce2] bg-[#fff9fa] px-5">
+          <div className="hidden h-[50px] w-[220px] items-center rounded-full border border-[#efdce2] bg-[#fff9fa] px-4 md:flex lg:w-[270px] lg:px-5">
 
             <input
               type="text"
@@ -157,7 +157,7 @@ export default function Navbar() {
 
 
           {/* Account */}
-          <Link href="/account" aria-label="Account">
+          <Link href="/account" aria-label="Account" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent">
             <svg
               width="27"
               height="27"
@@ -176,7 +176,7 @@ export default function Navbar() {
           <Link
             href="/cart"
             aria-label="Cart"
-            className="relative flex items-center"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent"
           >
             <ShoppingBag size={27} strokeWidth={1.5} />
 
