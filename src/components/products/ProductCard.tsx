@@ -49,7 +49,7 @@ export default function ProductCard({
           <div className="relative aspect-[4/5] overflow-hidden bg-[#f8f3f3]">
 
             <Image
-              src={safeProduct.image || "/images/products/placeholder.jpg"}
+              src={safeProduct.image || "/Images/products/placeholder.jpg"}
               alt={safeProduct.name || "Jewelry product"}
               fill
               className="object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -191,7 +191,7 @@ export default function ProductCard({
               {/* Image */}
               <div className="relative min-h-[450px] bg-[#f8f3f3]">
                 <Image
-                  src={safeProduct.image || "/images/products/placeholder.jpg"}
+                  src={safeProduct.image || "/Images/products/placeholder.jpg"}
                   alt={safeProduct.name || "Jewelry product"}
                   fill
                   className="object-cover"
