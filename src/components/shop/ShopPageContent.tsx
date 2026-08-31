@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState } from "react";
 import categories from "../../data/categories.json";
 import products from "../../data/products.json";
 import { useCart } from "../../context/CartContext";
-import Footer from "../layout/Footer";
 
 type Product = {
   id: number;
@@ -378,8 +377,6 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
           </div>
         </div>
       )}
-
-      <Footer />
     </>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Footer from "../../components/layout/Footer";
 
 const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hibameen90@gmail.com";
 const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
@@ -187,8 +186,6 @@ export default function ContactPage() {
           </section>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

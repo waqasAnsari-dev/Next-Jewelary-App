@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import BestSeller from "../components/products/BestSeller";
 import ShopByCategory from "../components/categories/ShopByCategory"; 
 import InstagramSection from "../components/instagram/InstagramSection";
-import Footer from "../components/layout/Footer";
 
 const slides = [
   { src: "/Hiba1.png", alt: "By Hiba handcrafted jewelry" },
@@ -100,7 +99,6 @@ export default function Home() {
             
         </div>
       </section>
-      <Footer />
     </main>
   );
 }
