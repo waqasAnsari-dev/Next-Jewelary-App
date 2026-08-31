@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ShoppingBag } from "lucide-react";
 import categories from "../../data/categories.json";
+import { useCart } from "../../context/CartContext";
 
 export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
+  const { cartCount } = useCart();
 
   return (
     <nav className="relative z-50 border-b border-[#f0dfe4] bg-white">
@@ -170,18 +173,29 @@ export default function Navbar() {
 
 
           {/* Cart */}
-          <Link href="/cart" aria-label="Cart">
-            <svg
-              width="29"
-              height="29"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-            >
-              <path d="M5 8h14l-1 13H6L5 8Z" />
-              <path d="M9 8a3 3 0 0 1 6 0" />
-            </svg>
+          <Link
+            href="/cart"
+            aria-label="Cart"
+            className="relative flex items-center"
+          >
+            <ShoppingBag size={27} strokeWidth={1.5} />
+
+            {cartCount > 0 && (
+              <span
+                className="
+                  absolute -right-3 -top-3
+                  flex h-6 w-6
+                  items-center justify-center
+                  rounded-full
+                  bg-[#ca9296]
+                  text-xs
+                  font-semibold
+                  text-white
+                "
+              >
+                {cartCount}
+              </span>
+            )}
           </Link>
 
         </div>

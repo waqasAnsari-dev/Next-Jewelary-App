@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { Eye, Heart, ShoppingBag, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import categories from "../../data/categories.json";
 import products from "../../data/products.json";
+import { useCart } from "../../context/CartContext";
 import Footer from "../layout/Footer";
 
 type Product = {
@@ -29,8 +31,11 @@ interface ShopPageContentProps {
 }
 
 export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPageContentProps) {
+  const { addToCart } = useCart();
   const [sortBy, setSortBy] = useState<SortOption>("Newest");
   const [currentPage, setCurrentPage] = useState(1);
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [likedProducts, setLikedProducts] = useState<number[]>([]);
   const pageSize = 12;
 
   const categorySlugMap = useMemo(
@@ -196,28 +201,69 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
             </div>
 
             <div className="grid gap-2.5 md:grid-cols-2 xl:grid-cols-3">
-              {paginatedProducts.map((product) => (
-                <div key={product.id} className="rounded-[14px] border border-[#efe2e7] bg-[#f9f5f6] p-1.5 shadow-sm">
-                  <div className="relative overflow-hidden rounded-[12px] bg-[#f4f0f0]">
-                    <img src={product.image} alt={product.name} className="h-[220px] w-full object-cover sm:h-[240px] xl:h-[260px]" />
-                    <button
-                      type="button"
-                      className="absolute bottom-2.5 left-1/2 -translate-x-1/2 rounded-full bg-white px-2.5 py-1.5 text-[11px] font-medium text-[#333] opacity-0 shadow-md transition hover:bg-[#f7dfe7] group-hover:opacity-100"
-                    >
-                      Add to Bag
-                    </button>
-                  </div>
+              {paginatedProducts.map((product) => {
+                const isLiked = likedProducts.includes(product.id);
+                const selectedSize = product.sizes?.[0] ?? "";
 
-                  <div className="pt-2.5 text-center">
-                    <Link href={`/product/${product.slug}`} className="block text-[14px] font-medium text-[#1f1f1f] hover:text-[#c88d9d]">
-                      {product.name}
-                    </Link>
-                    <p className="mt-1 text-[13px] font-semibold text-[#1f1f1f]">
-                      Rs. {product.price.toLocaleString("en-US")}
-                    </p>
+                return (
+                  <div key={product.id} className="group rounded-[14px] border border-[#efe2e7] bg-[#f9f5f6] p-1.5 shadow-sm">
+                    <div className="relative overflow-hidden rounded-[12px] bg-[#f4f0f0]">
+                      <img src={product.image} alt={product.name} className="h-[220px] w-full object-cover sm:h-[240px] xl:h-[260px]" />
+
+                      <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/10" />
+
+                      <div className="absolute right-3 top-3 flex translate-x-3 flex-col gap-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setLikedProducts((current) =>
+                              current.includes(product.id)
+                                ? current.filter((id) => id !== product.id)
+                                : [...current, product.id]
+                            )
+                          }
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110"
+                          aria-label="Add to wishlist"
+                        >
+                          <Heart
+                            size={18}
+                            className={isLiked ? "fill-[#ca9296] text-[#ca9296]" : "text-[#333]"}
+                          />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setQuickViewProduct(product)}
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110"
+                          aria-label="Quick view"
+                        >
+                          <Eye size={18} />
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => addToCart(product, selectedSize)}
+                        className="absolute bottom-0 left-0 right-0 translate-y-full bg-[#ca9296]/95 py-3 text-center text-[12px] font-semibold text-white transition-all duration-500 group-hover:translate-y-0"
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          <ShoppingBag size={16} />
+                          Add to Bag
+                        </span>
+                      </button>
+                    </div>
+
+                    <div className="pt-2.5 text-center">
+                      <Link href={`/product/${product.slug}`} className="block text-[14px] font-medium text-[#1f1f1f] hover:text-[#c88d9d]">
+                        {product.name}
+                      </Link>
+                      <p className="mt-1 text-[13px] font-semibold text-[#1f1f1f]">
+                        Rs. {product.price.toLocaleString("en-US")}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {totalPages > 1 && (
@@ -253,6 +299,85 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
         </div>
         </div>
       </main>
+
+      {quickViewProduct && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 px-4 py-6 backdrop-blur-sm"
+          onClick={() => setQuickViewProduct(null)}
+        >
+          <div
+            onClick={(event) => event.stopPropagation()}
+            className="relative max-h-[92vh] w-full max-w-[950px] overflow-y-auto rounded-[24px] bg-white shadow-2xl"
+          >
+            <button
+              type="button"
+              onClick={() => setQuickViewProduct(null)}
+              className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-md transition hover:scale-105"
+            >
+              <X size={21} />
+            </button>
+
+            <div className="grid md:grid-cols-2">
+              <div className="relative min-h-[450px] bg-[#f8f3f3]">
+                <img
+                  src={quickViewProduct.image}
+                  alt={quickViewProduct.name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="p-8 md:p-12">
+                <p className="text-sm uppercase tracking-[2px] text-[#ca9296]">
+                  {quickViewProduct.category}
+                </p>
+
+                <h2 className="mt-3 text-3xl font-semibold">
+                  {quickViewProduct.name}
+                </h2>
+
+                <p className="mt-5 text-2xl font-bold">
+                  Rs. {quickViewProduct.price.toLocaleString("en-US")}
+                </p>
+
+                <div className="my-7 h-px bg-[#ead4d8]" />
+
+                {quickViewProduct.sizes?.length > 0 && (
+                  <div>
+                    <h3 className="mb-4 font-semibold">Select Size</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {quickViewProduct.sizes.map((size) => (
+                        <button
+                          key={size}
+                          type="button"
+                          className="rounded-full border border-[#ca9296] px-5 py-2 text-[#ca9296] transition hover:bg-[#ca9296]/10"
+                        >
+                          {size}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    addToCart(quickViewProduct, quickViewProduct.sizes?.[0] ?? "");
+                    setQuickViewProduct(null);
+                  }}
+                  className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-[#ca9296] px-7 py-4 font-semibold text-white transition hover:bg-[#b97f84]"
+                >
+                  <ShoppingBag size={20} />
+                  Add to Bag
+                </button>
+
+                <p className="mt-5 text-center text-sm text-[#777]">
+                  Cash on Delivery & Bank Transfer available
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>

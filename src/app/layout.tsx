@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "../components/layout/Header";  
 import FloatingWhatsApp from "../components/layout/FloatingWhatsApp";
 import WelcomePopup from "../components/layout/WelcomePopup";
+import { CartProvider } from "../context/CartContext";
+import Footer from "../components/layout/Footer";
 export const metadata: Metadata = {
   title: "By Hiba",
   description: "Handcrafted jewelry and accessories",
@@ -45,12 +47,14 @@ export default function RootLayout({
           </Script>
         )}
 
-        <Header />
+        <CartProvider>
+          <Header />
 
-        {children}
-
-        <FloatingWhatsApp />
-        <WelcomePopup />
+          {children}
+          <Footer/>
+          <FloatingWhatsApp />
+          <WelcomePopup />
+        </CartProvider>
       </body>
     </html>
   );

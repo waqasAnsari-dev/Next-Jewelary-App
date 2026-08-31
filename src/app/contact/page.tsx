@@ -3,7 +3,10 @@
 import { useState } from "react";
 import Footer from "../../components/layout/Footer";
 
-const whatsappNumber = "923234016813";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hibameen90@gmail.com";
+const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
+const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${whatsappNumber}`;
+const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Karachi, Pakistan";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -66,8 +69,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[1rem] font-semibold text-[#2a2a2a]">Email</p>
-                    <a href="mailto:hibameen90@gmail.com" className="text-[1.05rem] text-[#2b2b2b] hover:text-[#c88d9d]">
-                      hibameen90@gmail.com
+                    <a href={`mailto:${contactEmail}`} className="text-[1.05rem] text-[#2b2b2b] hover:text-[#c88d9d]">
+                      {contactEmail}
                     </a>
                   </div>
                 </div>
@@ -78,9 +81,19 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-[1rem] font-semibold text-[#2a2a2a]">WhatsApp</p>
-                    <a href="https://wa.me/923234016813" target="_blank" rel="noreferrer" className="text-[1.05rem] text-[#2b2b2b] hover:text-[#c88d9d]">
-                      +923180414751
+                    <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-[1.05rem] text-[#2b2b2b] hover:text-[#c88d9d]">
+                      +{whatsappNumber}
                     </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f7e7eb] text-[1.3rem] text-[#c88d9d]">
+                    📍
+                  </div>
+                  <div>
+                    <p className="text-[1rem] font-semibold text-[#2a2a2a]">Address</p>
+                    <p className="text-[1.05rem] text-[#2b2b2b]">{storeAddress}</p>
                   </div>
                 </div>
 

@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hibameen90@gmail.com";
+const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
+const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${whatsappNumber}`;
+const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.hiba";
+const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Karachi, Pakistan";
+
 export default function Footer() {
   return (
     <footer className="relative w-full overflow-hidden border-t border-white/20 bg-[linear-gradient(135deg,#ca9296_0%,#c28b91_100%)] text-white">
@@ -30,12 +36,12 @@ export default function Footer() {
 
             {/* Location */}
             <p className="mt-7 text-[13px] text-white/90 md:text-[14px]">
-              Karachi, Pakistan
+              {storeAddress}
             </p>
 
             {/* Email */}
             <a
-              href="mailto:hibameen90@gmail.com"
+              href={`mailto:${contactEmail}`}
               className="mt-6 flex items-center gap-3 text-[13px] text-white/90 transition-opacity duration-300 hover:opacity-70 md:text-[14px]"
             >
               <svg
@@ -56,12 +62,12 @@ export default function Footer() {
                 <path d="m3 7 9 6 9-6" />
               </svg>
 
-              <span>hibameen90@gmail.com</span>
+              <span>{contactEmail}</span>
             </a>
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/923180414751"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 flex items-center gap-3 text-[13px] text-white/90 transition-opacity duration-300 hover:opacity-70 md:text-[14px]"
@@ -79,7 +85,7 @@ export default function Footer() {
                 <path d="M8.5 9.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3.1.5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.7-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.5.3-1.1.4-1.6.2-2.1-.7-4.5-3-5.2-5.1-.2-.6-.1-1.1.2-1.6Z" />
               </svg>
 
-              <span>03234016813</span>
+              <span>{whatsappNumber}</span>
             </a>
 
             {/* =========================
@@ -89,7 +95,7 @@ export default function Footer() {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com/by.hiba"
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -129,7 +135,7 @@ export default function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/923180414751"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

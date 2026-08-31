@@ -79,7 +79,7 @@ export default function BestSeller() {
     key={product.id}
     className="overflow-hidden rounded-2xl border-x border-b border-[#eadde2]"
   >
-    <ProductCard {...product} />
+    <ProductCard product={product} />
   </div>
 ))}
 
