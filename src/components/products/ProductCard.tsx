@@ -189,7 +189,7 @@ export default function ProductCard({
             <div className="grid md:grid-cols-2">
 
               {/* Image */}
-              <div className="relative min-h-[450px] bg-[#f8f3f3]">
+              <div className="relative min-h-[300px] bg-[#f8f3f3] sm:min-h-[400px] md:min-h-[450px]">
                 <Image
                   src={safeProduct.image || "/Images/products/placeholder.jpg"}
                   alt={safeProduct.name || "Jewelry product"}

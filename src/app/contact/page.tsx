@@ -43,7 +43,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-[#fdf9f9] text-[#2f2f2f]">
+      <main className="min-h-screen text-[#2f2f2f]">
         <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-center gap-2 text-[15px] font-medium text-[#6a5b60]">
             <span>Home</span>

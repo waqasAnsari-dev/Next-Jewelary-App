@@ -176,7 +176,7 @@ Please confirm this order.
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
 
       <div className="border-y border-[#f0dfe2] bg-[#fff8fa]">
         <div className="mx-auto max-w-[1300px] px-5 py-8">

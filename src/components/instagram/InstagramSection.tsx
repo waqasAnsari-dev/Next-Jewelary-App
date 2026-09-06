@@ -4,15 +4,15 @@ import instagramPosts from "../../data/instagram.json";
 
 export default function InstagramSection() {
   return (
-    <section className="w-full bg-white py-16 md:py-20 lg:py-24">
+    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
       
       {/* Heading */}
-      <div className="mb-14 text-center md:mb-16">
-        <h2 className="text-[48px] font-medium leading-tight tracking-[-1.5px] text-[#292929] md:text-[58px] lg:text-[64px]">
+      <div className="mb-8 px-4 text-center sm:mb-14 md:mb-16">
+        <h2 className="text-3xl font-medium leading-tight tracking-[-1.5px] text-[#292929] sm:text-[48px] md:text-[58px] lg:text-[64px]">
           Follow us on Instagram
         </h2>
 
-        <div className="mt-4 flex items-center justify-center gap-3 text-[17px] md:text-[19px]">
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2 px-2 text-sm sm:mt-4 sm:gap-3 sm:text-[17px] md:text-[19px]">
           <Link
             href="https://instagram.com/by.hiba"
             target="_blank"
@@ -31,7 +31,7 @@ export default function InstagramSection() {
       </div>
 
       {/* Instagram Images */}
-      <div className="mx-auto w-full max-w-[1540px] px-6">
+      <div className="mx-auto w-full max-w-[1540px] px-4 sm:px-6">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-3">
           {instagramPosts.map((post) => (
             <Link

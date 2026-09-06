@@ -8,7 +8,7 @@ const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Karachi, Pakistan
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden border-t border-white/20 bg-[linear-gradient(135deg,#ca9296_0%,#c28b91_100%)] text-white">
+    <footer className="relative w-full overflow-hidden border-t border-white/20 bg-gradient-to-r from-[#75558f] via-[#a77abb] to-[#805c99] text-white">
 
       {/* =========================
           MAIN FOOTER
@@ -62,7 +62,7 @@ export default function Footer() {
                 <path d="m3 7 9 6 9-6" />
               </svg>
 
-              <span>{contactEmail}</span>
+              <span className="break-all">{contactEmail}</span>
             </a>
 
             {/* WhatsApp */}
@@ -85,7 +85,7 @@ export default function Footer() {
                 <path d="M8.5 9.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.3.1.5-.1.7l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.7-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.5.3-1.1.4-1.6.2-2.1-.7-4.5-3-5.2-5.1-.2-.6-.1-1.1.2-1.6Z" />
               </svg>
 
-              <span>{whatsappNumber}</span>
+              <span className="break-all">{whatsappNumber}</span>
             </a>
 
             {/* =========================

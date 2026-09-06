@@ -20,7 +20,7 @@ export default function CartPage() {
 
   if (cart.length === 0) {
     return (
-      <main className="min-h-[70vh] bg-white px-5 py-20">
+      <main className="min-h-[70vh] px-5 py-20">
         <div className="mx-auto max-w-[800px] text-center">
 
           <h1 className="text-4xl font-semibold">
@@ -44,7 +44,7 @@ export default function CartPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen">
 
       {/* Header */}
       <div className="border-y border-[#f0dfe2] bg-[#fff8fa]">

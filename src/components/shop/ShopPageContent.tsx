@@ -83,7 +83,7 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
 
   return (
     <>
-      <main className="min-h-screen bg-[#f7efef] px-10 pb-10 pt-4 text-[#2a2a2a] sm:px-12 lg:px-16 xl:px-20">
+      <main className="min-h-screen px-4 pb-8 pt-4 text-[#2a2a2a] sm:px-8 sm:pb-10 lg:px-16 xl:px-20">
         <div className="mx-auto max-w-[1500px]">
         <div className="mb-4 flex flex-wrap items-center gap-2 text-[13px] text-[#6a5b60]">
           <Link href="/" className="hover:text-[#c88d9d]">Home</Link>
@@ -199,7 +199,7 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
               </div>
             </div>
 
-            <div className="grid gap-2.5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2.5 xl:grid-cols-3">
               {paginatedProducts.map((product) => {
                 const isLiked = likedProducts.includes(product.id);
                 const selectedSize = product.sizes?.[0] ?? "";
@@ -207,7 +207,7 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
                 return (
                   <div key={product.id} className="group rounded-[14px] border border-[#efe2e7] bg-[#f9f5f6] p-1.5 shadow-sm">
                     <div className="relative overflow-hidden rounded-[12px] bg-[#f4f0f0]">
-                      <img src={product.image} alt={product.name} className="h-[220px] w-full object-cover sm:h-[240px] xl:h-[260px]" />
+                      <img src={product.image} alt={product.name} className="h-[180px] w-full object-cover sm:h-[240px] xl:h-[260px]" />
 
                       <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/10" />
 
@@ -317,7 +317,7 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
             </button>
 
             <div className="grid md:grid-cols-2">
-              <div className="relative min-h-[450px] bg-[#f8f3f3]">
+              <div className="relative min-h-[300px] bg-[#f8f3f3] sm:min-h-[400px] md:min-h-[450px]">
                 <img
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}

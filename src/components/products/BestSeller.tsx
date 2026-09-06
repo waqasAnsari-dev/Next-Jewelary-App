@@ -54,25 +54,25 @@ const bestSellerProducts = [
 
 export default function BestSeller() {
   return (
-    <section className="w-full bg-white py-20 md:py-28">
+    <section className="w-full py-12 sm:py-16 md:py-28">
 
       {/* Section Header */}
-      <div className="mb-14 text-center">
+      <div className="mb-8 px-4 text-center sm:mb-14">
 
-        <h2 className="text-5xl font-medium tracking-tight text-[#292929] md:text-6xl">
+        <h2 className="text-3xl font-medium tracking-tight text-[#292929] sm:text-5xl md:text-6xl">
           Best Seller
         </h2>
 
-        <p className="mt-4 text-base text-gray-500 md:text-lg">
+        <p className="mt-3 text-sm text-gray-500 sm:mt-4 sm:text-base md:text-lg">
           Find exactly what you love
         </p>
 
       </div>
 
       {/* Products */}
-      <div className="mx-auto max-w-[1400px] px-6">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
 
-        <div className="grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-x-7 sm:gap-y-12 lg:grid-cols-4">
 
    {bestSellerProducts.map((product) => (
   <div

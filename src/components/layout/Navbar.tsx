@@ -14,16 +14,16 @@ export default function Navbar() {
 
   return (
     <nav className="relative z-50 border-b border-[#f0dfe4] bg-white">
-      <div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-3 px-4 py-3 md:h-[125px] md:px-8">
+      <div className="mx-auto flex h-16 max-w-[1500px] items-center justify-between gap-2 px-3 sm:h-[72px] sm:px-6 md:h-[100px] md:px-8 lg:px-12">
 
         {/* Logo */}
         <Link href="/" className="shrink-0 order-1">
           <Image
-            src="/logo.png"
+            src="/logo1.png"
             alt="By Hiba"
             width={125}
             height={60}
-            className="h-auto w-[95px] md:w-[125px]"
+            className="h-auto w-[78px] sm:w-[100px] md:w-[125px]"
           />
         </Link>
 
@@ -158,7 +158,7 @@ export default function Navbar() {
 
 
           {/* Account */}
-          <Link href="/account" aria-label="Account" className="hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent">
+          {/* <Link href="/account" aria-label="Account" className="hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-[#fff5f7] md:h-auto md:w-auto md:bg-transparent">
             <svg
               width="27"
               height="27"
@@ -170,7 +170,7 @@ export default function Navbar() {
               <circle cx="12" cy="7" r="4" />
               <path d="M4 21c.8-4 3.4-6 8-6s7.2 2 8 6" />
             </svg>
-          </Link>
+          </Link> */}
 
 
           {/* Cart */}
@@ -225,8 +225,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="border-t border-[#f0dfe4] bg-white px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-2">
+        <div className="border-t border-[#f0dfe4] bg-white px-3 py-3 md:hidden">
+          <div className="flex max-h-[calc(100vh-4rem)] flex-col gap-1 overflow-y-auto">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-[#222] hover:bg-[#fff5f7] hover:text-[#c88d9d]">
               HOME
             </Link>

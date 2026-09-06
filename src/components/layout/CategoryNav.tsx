@@ -39,13 +39,13 @@ export default function CategoryNav() {
 
   return (
     <div className="w-full border-b border-[#f5e8ed] bg-white">
-      <div className="relative mx-auto max-w-[1450px] px-12 py-4 sm:px-16 sm:py-6">
+      <div className="relative mx-auto max-w-[1450px] px-9 py-3 sm:px-16 sm:py-6">
 
         {/* Left Button */}
         <button
           type="button"
           onClick={() => scrollCategories("left")}
-          className="group absolute left-1 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#f6d977] bg-gradient-to-r from-[#fff9d6] via-[#ffe7a8] to-[#f9d0e1] shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg sm:left-3 sm:h-12 sm:w-12"
+          className="group absolute left-0.5 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[#f6d977] bg-gradient-to-r from-[#fff9d6] via-[#ffe7a8] to-[#f9d0e1] shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg sm:left-3 sm:h-12 sm:w-12"
           aria-label="Previous categories"
         >
           <ChevronLeft
@@ -66,7 +66,7 @@ export default function CategoryNav() {
               href={`/shop/${category
                 .toLowerCase()
                 .replaceAll(" ", "-")}`}
-              className="flex shrink-0 items-center justify-center rounded-full border border-[#eee5e9] px-4 py-2.5 text-sm font-medium text-[#444] transition hover:border-[#c58aa3] hover:bg-[#fff7fa] hover:text-[#c58aa3] sm:px-7 sm:py-4 sm:text-base"
+              className="flex shrink-0 items-center justify-center rounded-full border border-[#eee5e9] px-3 py-2 text-xs font-medium text-[#444] transition hover:border-[#c58aa3] hover:bg-[#fff7fa] hover:text-[#c58aa3] sm:px-7 sm:py-4 sm:text-base"
             >
               {category}
             </Link>
@@ -77,7 +77,7 @@ export default function CategoryNav() {
         <button
           type="button"
           onClick={() => scrollCategories("right")}
-          className="group absolute right-1 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#f6d977] bg-gradient-to-r from-[#fff9d6] via-[#ffe7a8] to-[#f9d0e1] shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg sm:right-3 sm:h-12 sm:w-12"
+          className="group absolute right-0.5 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[#f6d977] bg-gradient-to-r from-[#fff9d6] via-[#ffe7a8] to-[#f9d0e1] shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg sm:right-3 sm:h-12 sm:w-12"
           aria-label="Next categories"
         >
           <ChevronRight

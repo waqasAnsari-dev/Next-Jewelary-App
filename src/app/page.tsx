@@ -34,10 +34,10 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-white">
-      <section className="mx-auto w-full max-w-[1100px] px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+    <main className="min-h-screen overflow-hidden">
+      <section className="mx-auto w-full max-w-[1100px] px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
         <div className="relative">
-          <div className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl bg-[#fff7fa]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fff7fa] sm:aspect-[2/1]">
             {slides.map((slide, index) => (
               <div
                 key={slide.src}
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           
 
-          <div className="mt-4 flex justify-center gap-2" aria-label="Carousel slides">
+          <div className="mt-3 flex justify-center gap-2 sm:mt-4" aria-label="Carousel slides">
             {slides.map((slide, index) => (
               <button
                 key={slide.src}
@@ -93,12 +93,11 @@ export default function Home() {
               />
             ))}
           </div>
-           <BestSeller />
-           <ShopByCategory/>
-            <InstagramSection />
-            
         </div>
       </section>
+      <BestSeller />
+      <ShopByCategory />
+      <InstagramSection />
     </main>
   );
 }
