@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hibameen90@gmail.com";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "rangrawishmeen90@gmail.com";
 const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
 const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${whatsappNumber}`;
 const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Karachi, Pakistan";

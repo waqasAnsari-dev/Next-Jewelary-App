@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hibameen90@gmail.com";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "rangrawishmeen90@gmail.com";
 const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
 const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${whatsappNumber}`;
-const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.hiba";
-const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Karachi, Pakistan";
+const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangrawish";
+const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Lahore, Pakistan";
 
 export default function Footer() {
   return (
@@ -24,7 +24,7 @@ export default function Footer() {
 
             {/* Brand */}
             <h2 className="font-serif text-[30px] font-normal leading-none tracking-wide text-white md:text-[34px]">
-              By Hiba
+              By Rangrawish
             </h2>
 
             <span className="mt-5 block h-px w-16 bg-white/45" />
@@ -260,7 +260,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between gap-3 py-5 text-[11px] text-white/90 sm:text-[12px] md:flex-row md:items-center md:py-6">
 
           <p>
-            © 2026 By Hiba. All rights reserved.
+            © 2026 By Rangrawish. All rights reserved.
           </p>
 
           <p>

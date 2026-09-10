@@ -7,7 +7,7 @@ import WelcomePopup from "../components/layout/WelcomePopup";
 import { CartProvider } from "../context/CartContext";
 import Footer from "../components/layout/Footer";
 export const metadata: Metadata = {
-  title: "By Hiba",
+  title: "By Rangrawish",
   description: "Handcrafted jewelry and accessories",
 };
 

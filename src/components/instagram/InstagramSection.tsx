@@ -14,12 +14,12 @@ export default function InstagramSection() {
 
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2 px-2 text-sm sm:mt-4 sm:gap-3 sm:text-[17px] md:text-[19px]">
           <Link
-            href="https://instagram.com/by.hiba"
+            href="https://instagram.com/by.Rangrawish"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#c8899d] underline underline-offset-4 transition-opacity hover:opacity-70"
           >
-            by.hiba
+            by.Rangrawish
           </Link>
 
           <span className="text-[#999]">—</span>
@@ -36,7 +36,7 @@ export default function InstagramSection() {
           {instagramPosts.map((post) => (
             <Link
               key={post.id}
-              href="https://instagram.com/by.hiba"
+              href="https://instagram.com/by.rangrawish"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative aspect-square overflow-hidden rounded-[9px]"
