@@ -2,19 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import instagramPosts from "../../data/instagram.json";
 
+const instagramUrl =
+  process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangrawish";
+
 export default function InstagramSection() {
   return (
     <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
       
       {/* Heading */}
       <div className="mb-8 px-4 text-center sm:mb-14 md:mb-16">
-        <h2 className="text-3xl font-medium leading-tight tracking-[-1.5px] text-[#292929] sm:text-[48px] md:text-[58px] lg:text-[64px]">
+        <h2 className="section-title-reveal text-3xl font-medium leading-tight tracking-[-1.5px] text-[#292929] sm:text-[48px] md:text-[58px] lg:text-[64px]">
           Follow us on Instagram
         </h2>
 
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2 px-2 text-sm sm:mt-4 sm:gap-3 sm:text-[17px] md:text-[19px]">
           <Link
-            href="https://instagram.com/by.Rangrawish"
+            href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#c8899d] underline underline-offset-4 transition-opacity hover:opacity-70"
@@ -33,13 +36,14 @@ export default function InstagramSection() {
       {/* Instagram Images */}
       <div className="mx-auto w-full max-w-[1540px] px-4 sm:px-6">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-3">
-          {instagramPosts.map((post) => (
+          {instagramPosts.map((post, index) => (
             <Link
               key={post.id}
-              href="https://instagram.com/by.rangrawish"
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden rounded-[9px]"
+              style={{ animationDelay: `${index * 70}ms` }}
+              className="card-reveal group relative aspect-square overflow-hidden rounded-[9px]"
             >
               <Image
                 src={post.image}
@@ -52,7 +56,7 @@ export default function InstagramSection() {
               {/* Hover Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20">
                 <span className="scale-75 text-2xl text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
-                  Instagram
+                  View on Instagram
                 </span>
               </div>
             </Link>

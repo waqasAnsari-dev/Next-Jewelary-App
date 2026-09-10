@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden">
-      <section className="mx-auto w-full max-w-[1100px] px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
+      <section className="home-hero mx-auto w-full max-w-[1100px] px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
         <div className="relative">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fff7fa] sm:aspect-[2/1]">
             {slides.map((slide, index) => (
@@ -48,13 +48,13 @@ export default function Home() {
                 }`}
                 aria-hidden={index !== activeSlide}
               >
-                <Image
+                  <Image
                   src={slide.src}
                   alt={slide.alt}
                   fill
                   priority={index === 0}
                   sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1100px) calc(100vw - 3rem), 1100px"
-                  className="object-cover"
+                    className={`object-cover transition-transform duration-[5000ms] ease-out ${index === activeSlide ? "scale-105" : "scale-100"}`}
                 />
               </div>
             ))}
@@ -63,7 +63,7 @@ export default function Home() {
               type="button"
               onClick={showPrevious}
               aria-label="Previous slide"
-              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#333] shadow-md transition hover:bg-white sm:left-5 sm:h-11 sm:w-11"
+              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#333] shadow-md transition-all duration-300 hover:scale-110 hover:bg-white hover:shadow-lg active:scale-95 sm:left-5 sm:h-11 sm:w-11"
             >
               <ChevronLeft size={20} strokeWidth={1.8} />
             </button>
@@ -72,7 +72,7 @@ export default function Home() {
               type="button"
               onClick={showNext}
               aria-label="Next slide"
-              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#333] shadow-md transition hover:bg-white sm:right-5 sm:h-11 sm:w-11"
+              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#333] shadow-md transition-all duration-300 hover:scale-110 hover:bg-white hover:shadow-lg active:scale-95 sm:right-5 sm:h-11 sm:w-11"
             >
               <ChevronRight size={20} strokeWidth={1.8} />
             </button>
@@ -87,8 +87,8 @@ export default function Home() {
                 onClick={() => setActiveSlide(index)}
                 aria-label={`Show slide ${index + 1}`}
                 aria-current={index === activeSlide ? "true" : undefined}
-                className={`h-2.5 w-2.5 rounded-full transition ${
-                  index === activeSlide ? "bg-[#333]" : "bg-[#d4d4d4]"
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === activeSlide ? "w-7 bg-[#333]" : "w-2.5 bg-[#d4d4d4] hover:bg-[#999]"
                 }`}
               />
             ))}

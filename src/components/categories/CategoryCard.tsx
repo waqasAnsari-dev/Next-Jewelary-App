@@ -15,7 +15,7 @@ export default function CategoryCard({
   return (
     <Link
       href={`/shop/${slug}`}
-      className="group block min-w-0 overflow-hidden rounded-[16px] bg-white"
+      className="group category-card block min-w-0 overflow-hidden rounded-[16px] bg-white shadow-[0_4px_18px_rgba(113,65,75,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(113,65,75,0.14)]"
     >
       {/* Image */}
       <div className="relative aspect-[0.78] w-full overflow-hidden">
@@ -24,13 +24,13 @@ export default function CategoryCard({
           alt={name}
           fill
           priority={false}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 25vw"
         />
       </div>
 
       {/* Pink Category Name */}
-      <div className="flex h-[62px] items-center justify-center bg-[#f58aa3]">
+      <div className="flex h-[62px] items-center justify-center bg-[#f58aa3] transition-colors duration-500 group-hover:bg-[#df718d]">
         <h3 className="text-[20px] font-medium text-white">
           {name}
         </h3>
