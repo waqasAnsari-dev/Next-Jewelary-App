@@ -35,9 +35,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden">
-      <section className="home-hero mx-auto w-full max-w-[1100px] px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
-        <div className="relative">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#fff7fa] sm:aspect-[2/1]">
+      <section className="home-hero mx-auto w-full max-w-[1240px] px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+        <div className="relative rounded-[28px] bg-white p-1.5 shadow-[0_18px_55px_rgba(184,117,136,0.14)] sm:p-2">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] bg-[#fff7fa] sm:aspect-[2.15/1]">
             {slides.map((slide, index) => (
               <div
                 key={slide.src}
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           
 
-          <div className="mt-3 flex justify-center gap-2 sm:mt-4" aria-label="Carousel slides">
+          <div className="mt-4 flex justify-center gap-2 sm:mt-5" aria-label="Carousel slides">
             {slides.map((slide, index) => (
               <button
                 key={slide.src}
@@ -88,7 +88,7 @@ export default function Home() {
                 aria-label={`Show slide ${index + 1}`}
                 aria-current={index === activeSlide ? "true" : undefined}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  index === activeSlide ? "w-7 bg-[#333]" : "w-2.5 bg-[#d4d4d4] hover:bg-[#999]"
+                  index === activeSlide ? "w-7 bg-[#b87588]" : "w-2.5 bg-[#f0c4d4] hover:bg-[#d99db1]"
                 }`}
               />
             ))}

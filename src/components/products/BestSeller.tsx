@@ -54,12 +54,12 @@ const bestSellerProducts = [
 
 export default function BestSeller() {
   return (
-    <section className="w-full py-12 sm:py-16 md:py-28">
+    <section className="w-full py-14 sm:py-20 md:py-28">
 
       {/* Section Header */}
       <div className="mb-8 px-4 text-center sm:mb-14">
 
-        <h2 className="text-3xl font-medium tracking-tight text-[#292929] sm:text-5xl md:text-6xl">
+        <h2 className="text-3xl font-medium tracking-tight text-[#4b3039] sm:text-5xl md:text-6xl">
           Best Seller
         </h2>
 
@@ -77,7 +77,7 @@ export default function BestSeller() {
    {bestSellerProducts.map((product) => (
   <div
     key={product.id}
-    className="overflow-hidden rounded-2xl border-x border-b border-[#eadde2]"
+    className="overflow-hidden rounded-[20px] border border-[#eadde2] bg-white shadow-[0_8px_26px_rgba(184,117,136,0.08)] transition-transform duration-300 hover:-translate-y-1"
   >
     <ProductCard product={product} />
   </div>

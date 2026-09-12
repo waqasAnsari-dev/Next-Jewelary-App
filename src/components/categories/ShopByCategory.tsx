@@ -7,11 +7,11 @@ export default function ShopByCategory() {
   );
 
   return (
-    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24">
+    <section className="w-full border-y border-[#f3dce4] bg-[#fff7fa] py-14 sm:py-20 md:py-24 lg:py-28">
       
       {/* Heading */}
       <div className="mb-8 px-4 text-center sm:mb-14 sm:px-6 md:mb-16">
-        <h2 className="section-title-reveal text-3xl font-medium leading-tight tracking-[-1px] text-[#292929] sm:text-[48px] md:text-[58px] lg:text-[64px]">
+        <h2 className="section-title-reveal text-3xl font-medium leading-tight tracking-[-1px] text-[#4b3039] sm:text-[48px] md:text-[58px] lg:text-[64px]">
           Shop by Category
         </h2>
 

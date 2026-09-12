@@ -26,13 +26,25 @@ export default function ContactPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const cleanValue = (value: string) => value.trim();
     const message = [
-      "Hello, I would like to contact you.",
-      form.name ? `Name: ${form.name}` : "",
-      form.email ? `Email: ${form.email}` : "",
-      form.phone ? `Phone: ${form.phone}` : "",
-      form.subject ? `Subject: ${form.subject}` : "",
-      form.message ? `Message: ${form.message}` : "",
+      "✨ *New Contact Request* ✨",
+      "",
+      "Hello By rangravish team,",
+      "",
+      "I would like to get in touch with you.",
+      "",
+      "*Customer Information*",
+      `• *Name:* ${cleanValue(form.name)}`,
+      `• *Email:* ${cleanValue(form.email)}`,
+      form.phone.trim() ? `• *Phone:* ${cleanValue(form.phone)}` : "",
+      form.subject.trim() ? `• *Subject:* ${cleanValue(form.subject)}` : "",
+      "",
+      "*Message Details*",
+      cleanValue(form.message),
+      "",
+      "Looking forward to hearing from you.",
+      "Thank you! 🌸",
     ]
       .filter(Boolean)
       .join("\n");
