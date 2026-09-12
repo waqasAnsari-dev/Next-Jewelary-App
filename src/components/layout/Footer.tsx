@@ -9,7 +9,7 @@ const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Lahore, Pakistan"
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden border-t border-white/20 bg-gradient-to-r from-[#75558f] via-[#a77abb] to-[#805c99] text-white">
+    <footer className="relative w-full overflow-hidden border-t border-[#e9b4c7] bg-gradient-to-r from-[#d992ad] via-[#f0b8ca] to-[#d992ad] text-white">
 
       {/* =========================
           MAIN FOOTER

@@ -48,8 +48,8 @@ export default function WelcomePopup() {
         "
       >
 
-        {/* Top Blue Border */}
-        <div className="h-[8px] w-full bg-[#0874b9]" />
+        {/* Top Pink Border */}
+        <div className="h-[8px] w-full bg-[#f6c9d9]" />
 
         {/* Close Button */}
         <button
@@ -67,13 +67,13 @@ export default function WelcomePopup() {
             justify-center
             rounded-[16px]
             border-[3px]
-            border-[#c5ddec]
+            border-[#f0c4d4]
             bg-white
             text-[#687585]
             transition-all
             duration-300
-            hover:bg-[#f5f9fc]
-            hover:text-[#0874b9]
+            hover:bg-[#fff7fa]
+            hover:text-[#b87588]
             sm:right-5
             sm:top-5
             sm:h-[68px]
@@ -117,14 +117,14 @@ export default function WelcomePopup() {
               height="23"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#0874b9"
+              stroke="#c8899d"
               strokeWidth="2"
             >
               <path d="M12 2l2.5 4.5L19 9l-4.5 2.5L12 16l-2.5-4.5L5 9l4.5-2.5L12 2Z" />
               <path d="M19 16l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z" />
             </svg>
 
-            <span className="text-[16px] font-bold uppercase tracking-[2px] text-[#0874b9]">
+            <span className="text-[16px] font-bold uppercase tracking-[2px] text-[#b87588]">
               Important Update
             </span>
 
@@ -146,21 +146,21 @@ export default function WelcomePopup() {
 
 
           {/* Highlight */}
-          <div className="mx-auto mt-7 flex w-fit items-center gap-2 rounded-full border border-[#c9e2f3] bg-[#f4faff] px-4 py-3 text-center sm:px-6">
+          <div className="mx-auto mt-7 flex w-fit items-center gap-2 rounded-full border border-[#f0c4d4] bg-[#fff7fa] px-4 py-3 text-center sm:px-6">
 
             <svg
               width="22"
               height="22"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#0874b9"
+              stroke="#c8899d"
               strokeWidth="2"
             >
               <circle cx="12" cy="12" r="9" />
               <path d="M12 7v5l3 2" />
             </svg>
 
-            <span className="text-[14px] font-bold text-[#075c91] sm:text-[16px]">
+            <span className="text-[14px] font-bold text-[#8f5368] sm:text-[16px]">
               Handmade With Love
             </span>
 
@@ -182,17 +182,17 @@ export default function WelcomePopup() {
               mt-8
               w-full
               rounded-[17px]
-              bg-[#0874b9]
+              bg-[#c8899d]
               px-5
               py-4
               text-[17px]
               font-bold
               text-white
-              shadow-[0_10px_25px_rgba(8,116,185,0.25)]
+              shadow-[0_10px_25px_rgba(200,137,157,0.25)]
               transition-all
               duration-300
-              hover:bg-[#0766a2]
-              hover:shadow-[0_14px_30px_rgba(8,116,185,0.32)]
+              hover:bg-[#b87588]
+              hover:shadow-[0_14px_30px_rgba(184,117,136,0.32)]
               active:scale-[0.99]
               sm:px-6
               sm:py-5

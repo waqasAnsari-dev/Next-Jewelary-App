@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-gradient-to-r from-[#a982d2] via-[#c3a2eb] to-[#ad8bd8] text-black antialiased">
+      <body suppressHydrationWarning className="bg-gradient-to-b from-white via-[#fffafd] to-[#f6c9d9]/35 text-black antialiased">
         {process.env.NODE_ENV === "development" && (
           <Script id="remove-extension-attributes" strategy="beforeInteractive">
             {`(function () {

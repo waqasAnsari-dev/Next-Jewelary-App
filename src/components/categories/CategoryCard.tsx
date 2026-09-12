@@ -30,8 +30,8 @@ export default function CategoryCard({
       </div>
 
       {/* Pink Category Name */}
-      <div className="flex h-[62px] items-center justify-center bg-[#f58aa3] transition-colors duration-500 group-hover:bg-[#df718d]">
-        <h3 className="text-[20px] font-medium text-white">
+      <div className="flex h-[62px] items-center justify-center bg-[#f6c9d9] transition-colors duration-500 group-hover:bg-[#eeb0c5]">
+        <h3 className="text-[20px] font-medium text-[#5a3543]">
           {name}
         </h3>
       </div>

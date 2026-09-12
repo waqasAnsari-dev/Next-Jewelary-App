@@ -4,37 +4,15 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-
-const categories = [
-  "Earrings",
-  "Tiaras",
-  "Bracelets",
-  "Pendants",
-  "Resin jhumkas",
-  "Flower preservation",
-  "Rings",
-  "Arm cuffs",
-  "Neck pieces",
-  "Gift Boxes",
-  "Hair Accessories",
-  "Charms",
-  "Neck Pieces",
-  "Bangles"
-];
+import categories from "../../data/categories.json";
 
 
 export default function CategoryNav() {
   const categoryListRef = useRef<HTMLDivElement | null>(null);
-  const dragStartXRef = useRef(0);
-  const dragStartScrollRef = useRef(0);
-  const hasDraggedRef = useRef(false);
   const pathname = usePathname();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const getCategorySlug = (category: string) =>
-    category.toLowerCase().replaceAll(" ", "-");
 
   const updateScrollState = () => {
     const container = categoryListRef.current;
@@ -72,36 +50,6 @@ export default function CategoryNav() {
     });
   };
 
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    const container = categoryListRef.current;
-    if (!container) return;
-
-    dragStartXRef.current = event.clientX;
-    dragStartScrollRef.current = container.scrollLeft;
-    hasDraggedRef.current = false;
-    container.setPointerCapture(event.pointerId);
-    container.classList.add("is-dragging");
-  };
-
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    const container = categoryListRef.current;
-    if (!container || !container.hasPointerCapture(event.pointerId)) return;
-
-    const distance = event.clientX - dragStartXRef.current;
-    if (Math.abs(distance) > 5) hasDraggedRef.current = true;
-    container.scrollLeft = dragStartScrollRef.current - distance;
-  };
-
-  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    const container = categoryListRef.current;
-    if (!container) return;
-
-    if (container.hasPointerCapture(event.pointerId)) {
-      container.releasePointerCapture(event.pointerId);
-    }
-    container.classList.remove("is-dragging");
-  };
-
   const activeCategory = pathname.startsWith("/shop/")
     ? pathname.split("/").pop()
     : null;
@@ -128,31 +76,23 @@ export default function CategoryNav() {
         {/* Categories */}
         <div
           ref={categoryListRef}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
-          onClick={(event) => {
-            if (hasDraggedRef.current) {
-              event.preventDefault();
-              hasDraggedRef.current = false;
-            }
-          }}
-          className="category-rail flex cursor-grab gap-2 overflow-x-auto scroll-smooth px-1 py-1 scrollbar-hide sm:gap-4"
+          className="category-rail flex gap-2 overflow-x-auto scroll-smooth px-1 py-1 scrollbar-hide sm:gap-4"
         >
-          {categories.map((category, index) => (
+          {categories
+            .filter((category) => category.isActive)
+            .map((category, index) => (
             <Link
-              key={`${category}-${index}`}
-              href={`/shop/${getCategorySlug(category)}`}
+              key={category.id}
+              href={`/shop/${category.slug}`}
               style={{ animationDelay: `${index * 45}ms` }}
               className={`category-reveal group relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border px-3 py-2 text-xs font-medium shadow-[0_2px_8px_rgba(113,65,75,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(197,138,163,0.16)] active:scale-[0.98] sm:px-7 sm:py-3 sm:text-base ${
-                activeCategory === getCategorySlug(category)
+                activeCategory === category.slug
                   ? "border-[#c58aa3] bg-[#fff1f5] text-[#b87588] shadow-[0_4px_14px_rgba(197,138,163,0.14)]"
                   : "border-[#eee5e9] bg-white text-[#514347] hover:border-[#c58aa3] hover:bg-[#fff7fa] hover:text-[#b87588]"
               }`}
             >
               <span className="absolute inset-x-5 top-0 h-px -translate-x-[140%] bg-gradient-to-r from-transparent via-[#e6afbd] to-transparent transition-transform duration-500 group-hover:translate-x-[140%]" />
-              {category}
+              {category.name}
             </Link>
           ))}
         </div>
