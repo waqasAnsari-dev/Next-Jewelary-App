@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Eye, Heart, ShoppingBag, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import categories from "../../data/categories.json";
 import products from "../../data/products.json";
 import { useCart } from "../../context/CartContext";
@@ -23,6 +23,7 @@ type Product = {
 };
 
 type SortOption = "Newest" | "Price: Low to High" | "Price: High to Low" | "Most Popular";
+type QuickFilter = "isSale" | "isNew" | "isBestSeller" | "isFeatured";
 
 interface ShopPageContentProps {
   selectedCategory?: string;
@@ -35,6 +36,11 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
   const [currentPage, setCurrentPage] = useState(1);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [likedProducts, setLikedProducts] = useState<number[]>([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [appliedPriceRange, setAppliedPriceRange] = useState({ min: "", max: "" });
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [quickFilters, setQuickFilters] = useState<QuickFilter[]>([]);
   const pageSize = 12;
 
   const categorySlugMap = useMemo(
@@ -42,16 +48,28 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
     [],
   );
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedCategory, sortBy]);
-
   const visibleProducts = useMemo(() => {
     const list = (products as Product[]).filter((product) => {
-      if (!selectedCategory) return true;
+      if (selectedCategory) {
+        const productCategorySlug = categorySlugMap.get(product.category.trim().toLowerCase());
+        if (productCategorySlug !== selectedCategory) return false;
+      }
 
-      const productCategorySlug = categorySlugMap.get(product.category.trim().toLowerCase());
-      return productCategorySlug === selectedCategory;
+      const minimumPrice = appliedPriceRange.min ? Number(appliedPriceRange.min) : null;
+      const maximumPrice = appliedPriceRange.max ? Number(appliedPriceRange.max) : null;
+      if (minimumPrice !== null && product.price < minimumPrice) return false;
+      if (maximumPrice !== null && product.price > maximumPrice) return false;
+
+      if (
+        selectedSizes.length > 0 &&
+        !product.sizes.some((productSize) =>
+          selectedSizes.includes(productSize.trim().toLowerCase().replace(/\s+/g, "")),
+        )
+      ) {
+        return false;
+      }
+
+      return quickFilters.length === 0 || quickFilters.some((filter) => product[filter]);
     });
 
     switch (sortBy) {
@@ -65,7 +83,26 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
       default:
         return [...list].sort((a, b) => Number(b.isNew) - Number(a.isNew));
     }
-  }, [categorySlugMap, selectedCategory, sortBy]);
+  }, [appliedPriceRange, categorySlugMap, quickFilters, selectedCategory, selectedSizes, sortBy]);
+
+  const toggleSize = (size: string) => {
+    const normalizedSize = size.toLowerCase().replace(/\s+/g, "");
+    setCurrentPage(1);
+    setSelectedSizes((current) =>
+      current.includes(normalizedSize)
+        ? current.filter((selectedSize) => selectedSize !== normalizedSize)
+        : [...current, normalizedSize],
+    );
+  };
+
+  const toggleQuickFilter = (filter: QuickFilter) => {
+    setCurrentPage(1);
+    setQuickFilters((current) =>
+      current.includes(filter)
+        ? current.filter((selectedFilter) => selectedFilter !== filter)
+        : [...current, filter],
+    );
+  };
 
   const totalPages = Math.max(1, Math.ceil(visibleProducts.length / pageSize));
   const safeCurrentPage = Math.min(currentPage, totalPages);
@@ -120,10 +157,31 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
             <div className="mb-5">
               <h3 className="mb-2 text-[13px] font-bold uppercase tracking-[0.08em]">Price Range</h3>
               <div className="flex gap-2.5">
-                <input type="text" placeholder="Min" className="w-full rounded-full border border-[#e4ccd3] bg-white px-3 py-2 outline-none text-[13px]" />
-                <input type="text" placeholder="Max" className="w-full rounded-full border border-[#e4ccd3] bg-white px-3 py-2 outline-none text-[13px]" />
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="Min"
+                  value={minPrice}
+                  onChange={(event) => setMinPrice(event.target.value)}
+                  className="w-full rounded-full border border-[#e4ccd3] bg-white px-3 py-2 outline-none text-[13px]"
+                />
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="Max"
+                  value={maxPrice}
+                  onChange={(event) => setMaxPrice(event.target.value)}
+                  className="w-full rounded-full border border-[#e4ccd3] bg-white px-3 py-2 outline-none text-[13px]"
+                />
               </div>
-              <button className="mt-3 w-full rounded-full border border-[#d99db1] bg-[#f8edf1] px-4 py-2 text-[14px] font-medium text-[#c17490]">
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentPage(1);
+                  setAppliedPriceRange({ min: minPrice, max: maxPrice });
+                }}
+                className="mt-3 w-full rounded-full border border-[#d99db1] bg-[#f8edf1] px-4 py-2 text-[14px] font-medium text-[#c17490]"
+              >
                 Apply
               </button>
             </div>
@@ -158,7 +216,12 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
                   <button
                     key={size}
                     type="button"
-                    className="rounded-full border border-[#d9a9b8] bg-white px-2.5 py-1.5 text-[12px] text-[#474747] transition hover:border-[#c88d9d] hover:text-[#c88d9d]"
+                    onClick={() => toggleSize(size)}
+                    className={`rounded-full border px-2.5 py-1.5 text-[12px] transition hover:border-[#c88d9d] hover:text-[#c88d9d] ${
+                      selectedSizes.includes(size.toLowerCase().replace(/\s+/g, ""))
+                        ? "border-[#c88d9d] bg-[#c88d9d] text-white"
+                        : "border-[#d9a9b8] bg-white text-[#474747]"
+                    }`}
                   >
                     {size}
                   </button>
@@ -169,10 +232,22 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
             <div>
               <h3 className="mb-2 text-[13px] font-bold uppercase tracking-[0.08em]">Quick Filters</h3>
               <div className="space-y-1.5 text-[13px] text-[#444]">
-                <button type="button" className="flex items-center gap-3 hover:text-[#c88d9d]">Sale Items</button>
-                <button type="button" className="flex items-center gap-3 hover:text-[#c88d9d]">New Arrivals</button>
-                <button type="button" className="flex items-center gap-3 hover:text-[#c88d9d]">Best Sellers</button>
-                <button type="button" className="flex items-center gap-3 hover:text-[#c88d9d]">Featured</button>
+                {([
+                  ["isSale", "Sale Items"],
+                  ["isNew", "New Arrivals"],
+                  ["isBestSeller", "Best Sellers"],
+                  ["isFeatured", "Featured"],
+                ] as [QuickFilter, string][]).map(([filter, label]) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    onClick={() => toggleQuickFilter(filter)}
+                    className={`flex items-center gap-3 hover:text-[#c88d9d] ${quickFilters.includes(filter) ? "font-semibold text-[#c88d9d]" : ""}`}
+                  >
+                    <span className={`h-3.5 w-3.5 rounded border ${quickFilters.includes(filter) ? "border-[#c88d9d] bg-[#c88d9d]" : "border-[#d9a9b8] bg-white"}`} />
+                    {label}
+                  </button>
+                ))}
               </div>
             </div>
           </aside>
@@ -187,7 +262,10 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
               <div className="relative">
                 <select
                   value={sortBy}
-                  onChange={(event) => setSortBy(event.target.value as SortOption)}
+                  onChange={(event) => {
+                    setCurrentPage(1);
+                    setSortBy(event.target.value as SortOption);
+                  }}
                   className="appearance-none rounded-full border border-[#e5d6dc] bg-white px-3.5 py-2 pr-8 text-[13px] text-[#2d2d2d] outline-none"
                 >
                   <option>Newest</option>

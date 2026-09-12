@@ -20,7 +20,7 @@ export default function Navbar() {
         <Link href="/" className="shrink-0 order-1">
           <Image
             src="/logo1.png"
-            alt="By Rangrawish"
+            alt="By rangravish"
             width={125}
             height={60}
             className="h-auto w-[78px] sm:w-[100px] md:w-[125px]"

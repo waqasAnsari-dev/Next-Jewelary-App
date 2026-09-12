@@ -1,9 +1,10 @@
 import Link from "next/link";
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "rangrawishmeen90@gmail.com";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "rangravishmeen90@gmail.com";
 const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923180414751").replace(/\D/g, "");
 const whatsappUrl = process.env.NEXT_PUBLIC_WHATSAPP_URL ?? `https://wa.me/${whatsappNumber}`;
-const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangrawish";
+const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangravish";
+const tiktokUrl = process.env.NEXT_PUBLIC_TIKTOK_URL ?? "https://www.tiktok.com/@by.rangravish";
 const storeAddress = process.env.NEXT_PUBLIC_STORE_ADDRESS ?? "Lahore, Pakistan";
 
 export default function Footer() {
@@ -24,7 +25,7 @@ export default function Footer() {
 
             {/* Brand */}
             <h2 className="font-serif text-[30px] font-normal leading-none tracking-wide text-white md:text-[34px]">
-              By Rangrawish
+              By rangravish
             </h2>
 
             <span className="mt-5 block h-px w-16 bg-white/45" />
@@ -155,6 +156,29 @@ export default function Footer() {
                 </svg>
               </a>
 
+              {/* TikTok */}
+              <a
+                href={tiktokUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/10 transition-all duration-300 hover:scale-105 hover:border-white/25 hover:bg-white/20"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M15 4v10.5a3.5 3.5 0 1 1-3.5-3.5" />
+                  <path d="M15 4c.5 2.3 1.9 3.8 4 4" />
+                </svg>
+              </a>
+
             </div>
           </div>
 
@@ -260,7 +284,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between gap-3 py-5 text-[11px] text-white/90 sm:text-[12px] md:flex-row md:items-center md:py-6">
 
           <p>
-            © 2026 By Rangrawish. All rights reserved.
+            © 2026 By rangravish. All rights reserved.
           </p>
 
           <p>

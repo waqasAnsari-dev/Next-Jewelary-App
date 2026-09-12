@@ -8,8 +8,8 @@ import ShopByCategory from "../components/categories/ShopByCategory";
 import InstagramSection from "../components/instagram/InstagramSection";
 
 const slides = [
-  { src: "/Rangrawish2.png", alt: "By Rangrawish handcrafted jewelry" },
-  { src: "/rangrawish1.png", alt: "By Rangrawish jewelry collection" },
+  { src: "/rangravish2.png", alt: "By rangravish handcrafted jewelry" },
+  { src: "/rangravish1.png", alt: "By rangravish jewelry collection" },
 ];
 
 export default function Home() {

@@ -105,7 +105,7 @@ export default function WelcomePopup() {
             id="welcome-popup-title"
             className="pr-8 text-center text-[26px] font-extrabold tracking-tight text-[#17191c] sm:pr-20 sm:text-[36px]"
           >
-            By Rangrawish
+            By rangravish
           </h2>
 
 
@@ -133,7 +133,7 @@ export default function WelcomePopup() {
 
           {/* Main Heading */}
           <h3 className="mt-7 text-center text-[24px] font-extrabold leading-tight text-[#17191c] sm:text-[32px]">
-            Welcome to By Rangrawish 
+            Welcome to By rangravish 
           </h3>
 
 

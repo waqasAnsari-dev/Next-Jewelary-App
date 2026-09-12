@@ -3,7 +3,7 @@ import Link from "next/link";
 import instagramPosts from "../../data/instagram.json";
 
 const instagramUrl =
-  process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangrawish";
+  process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/by.rangravish";
 
 export default function InstagramSection() {
   return (
@@ -22,7 +22,7 @@ export default function InstagramSection() {
             rel="noopener noreferrer"
             className="text-[#c8899d] underline underline-offset-4 transition-opacity hover:opacity-70"
           >
-            by.Rangrawish
+            by.rangravish
           </Link>
 
           <span className="text-[#999]">—</span>

@@ -40,19 +40,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const savedCart = localStorage.getItem("rangrawish-cart");
+    const savedCart = localStorage.getItem("rangravish-cart");
 
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
       } catch {
-        localStorage.removeItem("rangrawish-cart");
+        localStorage.removeItem("rangravish-cart");
       }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("rangrawish-cart", JSON.stringify(cart));
+    localStorage.setItem("rangravish-cart", JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = (product: any, size?: string) => {

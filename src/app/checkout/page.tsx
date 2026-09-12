@@ -77,7 +77,7 @@ export default function CheckoutPage() {
     setPlacingOrder(true);
 
     const orderNumber =
-      `Rangrawish-${Date.now().toString().slice(-6)}`;
+      `rangravish-${Date.now().toString().slice(-6)}`;
 
     const productsMessage = cart
       .map(
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
       .join("\n");
 
     const message = `
-🛍️ *NEW BY Rangrawish ORDER*
+🛍️ *NEW BY rangravish ORDER*
 
 Order #: ${orderNumber}
 
