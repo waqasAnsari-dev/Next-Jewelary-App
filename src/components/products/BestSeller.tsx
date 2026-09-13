@@ -60,11 +60,14 @@ export default function BestSeller() {
       <div className="mb-8 px-4 text-center sm:mb-14">
 
         <h2 className="text-3xl font-medium tracking-tight text-[#4b3039] sm:text-5xl md:text-6xl">
-          Best Seller
+          <span className="inline-flex items-center gap-2">
+            <span aria-hidden="true">🔥</span>
+            Hot Seller
+          </span>
         </h2>
 
         <p className="mt-3 text-sm text-gray-500 sm:mt-4 sm:text-base md:text-lg">
-          Find exactly what you love
+          Discover the pieces everyone is loving right now
         </p>
 
       </div>
@@ -74,14 +77,11 @@ export default function BestSeller() {
 
         <div className="grid grid-cols-2 gap-3 sm:gap-x-7 sm:gap-y-12 lg:grid-cols-4">
 
-   {bestSellerProducts.map((product) => (
-  <div
-    key={product.id}
-    className="overflow-hidden rounded-[20px] border border-[#eadde2] bg-white shadow-[0_8px_26px_rgba(184,117,136,0.08)] transition-transform duration-300 hover:-translate-y-1"
-  >
-    <ProductCard product={product} />
-  </div>
-))}
+          {bestSellerProducts.map((product) => (
+            <div key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
 
         </div>
 

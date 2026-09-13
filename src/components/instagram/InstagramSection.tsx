@@ -43,19 +43,19 @@ export default function InstagramSection() {
               target="_blank"
               rel="noopener noreferrer"
               style={{ animationDelay: `${index * 70}ms` }}
-              className="card-reveal group relative aspect-square overflow-hidden rounded-[9px]"
+              className="card-reveal group relative aspect-square overflow-hidden rounded-[14px] border-4 border-white bg-[#f7e9ee] shadow-[0_8px_24px_rgba(113,65,75,0.1)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(113,65,75,0.18)]"
             >
               <Image
                 src={post.image}
                 alt={post.alt}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20">
-                <span className="scale-75 text-2xl text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#321d27]/0 transition-all duration-300 group-hover:bg-[#321d27]/45">
+                <span className="scale-75 rounded-full border border-white/70 px-3 py-1.5 text-center text-xs font-medium text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 sm:text-sm">
                   View on Instagram
                 </span>
               </div>

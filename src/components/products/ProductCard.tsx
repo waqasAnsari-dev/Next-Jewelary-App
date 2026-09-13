@@ -42,8 +42,8 @@ export default function ProductCard({
   return (
     <>
       {/* Product Card */}
-      <article className="group">
-        <div className="overflow-hidden rounded-[18px] border border-[#ead4d8] bg-white">
+      <article className="group h-full">
+        <div className="h-full overflow-hidden rounded-[18px] border border-[#ead4d8] bg-white shadow-[0_10px_30px_rgba(184,117,136,0.08)] transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_16px_34px_rgba(184,117,136,0.16)]">
 
           {/* Image */}
           <div className="relative aspect-[4/5] overflow-hidden bg-[#f8f3f3]">
@@ -52,7 +52,7 @@ export default function ProductCard({
               src={safeProduct.image || "/Images/products/placeholder.jpg"}
               alt={safeProduct.name || "Jewelry product"}
               fill
-              className="object-cover transition duration-700 group-hover:scale-[1.04]"
+              className="object-cover transition duration-700 group-hover:scale-[1.06]"
               sizes="(max-width: 768px) 50vw, 25vw"
             />
 
@@ -67,9 +67,10 @@ export default function ProductCard({
             <div
               className="
                 absolute inset-0
-                bg-black/0
+                bg-gradient-to-t from-[#4b3039]/20 via-transparent to-transparent
+                opacity-0
                 transition-all duration-500
-                group-hover:bg-black/10
+                group-hover:opacity-100
               "
             />
 
@@ -136,12 +137,16 @@ export default function ProductCard({
           </div>
 
           {/* Product Info */}
-          <div className="px-5 py-5">
-            <h2 className="line-clamp-2 min-h-[48px] text-[17px]">
+          <div className="flex min-h-[118px] flex-col px-4 py-4 sm:px-5 sm:py-5">
+            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ca9296]">
+              {safeProduct.category || "Jewelry"}
+            </p>
+
+            <h2 className="line-clamp-2 min-h-[44px] text-[16px] leading-6 text-[#4b3039] sm:text-[17px]">
               {safeProduct.name || "Jewelry"}
             </h2>
 
-            <p className="mt-2 text-[19px] font-bold">
+            <p className="mt-auto pt-3 text-[17px] font-bold text-[#332b2d] sm:text-[19px]">
               Rs. {(safeProduct.price ?? 0).toLocaleString()}
             </p>
           </div>
