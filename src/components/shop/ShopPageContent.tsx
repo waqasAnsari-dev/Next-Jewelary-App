@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Eye, Heart, ShoppingBag, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import categories from "../../data/categories.json";
@@ -130,7 +131,7 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
 
 
         <div className="mt-4 grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] xl:gap-5">
-          <aside className="rounded-[16px] border border-[#f0dfe4] bg-[#f8e9ee] p-3 text-[#2d2d2d] lg:p-3.5">
+          <aside className="min-w-0 rounded-[16px] border border-[#f0dfe4] bg-[#f8e9ee] p-3 text-[#2d2d2d] lg:p-3.5">
             <h2 className="mb-3 text-[18px] font-semibold uppercase tracking-wide">Filter Products</h2>
 
             <div className="mb-5">
@@ -253,13 +254,13 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
           </aside>
 
           <section className="min-w-0">
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <div>
+            <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
+              <div className="min-w-0">
                 <h1 className="text-[25px] font-semibold tracking-[-0.04em] text-[#1f1f1f] sm:text-[28px]">{activeCategoryName}</h1>
                 <p className="mt-1 text-[12px] text-[#555]">{visibleProducts.length} products</p>
               </div>
 
-              <div className="relative">
+              <div className="relative shrink-0">
                 <select
                   value={sortBy}
                   onChange={(event) => {
@@ -277,17 +278,36 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2.5 xl:grid-cols-3">
+            <div className="grid min-w-0 grid-cols-2 gap-2 sm:gap-3 xl:grid-cols-3">
               {paginatedProducts.map((product) => {
                 const isLiked = likedProducts.includes(product.id);
                 const selectedSize = product.sizes?.[0] ?? "";
 
                 return (
-                  <div key={product.id} className="group rounded-[14px] border border-[#efe2e7] bg-[#f9f5f6] p-1.5 shadow-sm">
-                    <div className="relative overflow-hidden rounded-[12px] bg-[#f4f0f0]">
-                      <img src={product.image} alt={product.name} className="h-[180px] w-full object-cover sm:h-[240px] xl:h-[260px]" />
+                  <article key={product.id} className="group min-w-0 overflow-hidden rounded-[18px] border border-[#eadde2] bg-white shadow-[0_8px_24px_rgba(113,65,75,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(113,65,75,0.15)]">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-[#f4f0f0]">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition duration-700 group-hover:scale-[1.06]"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      />
 
-                      <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#321d27]/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                      <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+                        {product.isNew && (
+                          <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#b87588] shadow-sm">
+                            New
+                          </span>
+                        )}
+                        {product.isSale && (
+                          <span className="rounded-full bg-[#b87588] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm">
+                            Sale
+                          </span>
+                        )}
+                      </div>
 
                       <div className="absolute right-3 top-3 flex translate-x-3 flex-col gap-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
                         <button
@@ -330,15 +350,18 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
                       </button>
                     </div>
 
-                    <div className="pt-2.5 text-center">
-                      <Link href={`/product/${product.slug}`} className="block text-[14px] font-medium text-[#1f1f1f] hover:text-[#c88d9d]">
+                    <div className="min-h-[108px] px-3.5 py-3.5 sm:px-4">
+                      <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#ca9296]">
+                        {product.category}
+                      </p>
+                      <Link href={`/product/${product.slug}`} className="block min-h-[40px] text-[14px] font-medium leading-5 text-[#4b3039] transition-colors hover:text-[#c88d9d] sm:text-[15px]">
                         {product.name}
                       </Link>
-                      <p className="mt-1 text-[13px] font-semibold text-[#1f1f1f]">
+                      <p className="mt-2 text-[15px] font-bold text-[#332b2d]">
                         Rs. {product.price.toLocaleString("en-US")}
                       </p>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>
@@ -396,10 +419,12 @@ export default function ShopPageContent({ selectedCategory, pageTitle }: ShopPag
 
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[300px] bg-[#f8f3f3] sm:min-h-[400px] md:min-h-[450px]">
-                <img
+                <Image
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
-                  className="h-full w-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 

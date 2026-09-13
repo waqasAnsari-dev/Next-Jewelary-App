@@ -55,7 +55,7 @@ export default function CategoryNav() {
     : null;
 
   return (
-    <div className="w-full border-b border-[#f5e8ed]/80 bg-white/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_4px_18px_rgba(113,65,75,0.04)] backdrop-blur-md">
+    <div className="hidden w-full border-b border-[#f5e8ed]/80 bg-white/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_4px_18px_rgba(113,65,75,0.04)] backdrop-blur-md md:block">
       <div className="relative mx-auto max-w-[1450px] px-9 py-3 sm:px-16 sm:py-5">
 
         {/* Left Button */}
